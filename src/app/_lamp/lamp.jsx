@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { motion } from "motion/react";
-import { cn } from "../../lib/utils";
+import { cn } from "../lib/utils";
 import Link from "next/link";
 
 export function LampDemo() {
@@ -27,36 +27,36 @@ export function LampDemo() {
         }} className="mt-8 bg-gradient-to-br from-slate-300 to-slate-500 py-4 bg-clip-text text-center text-4xl capitalize font-medium tracking-tight text-transparent md:text-4xl">front end developer & ui/ux designer
       </motion.p>
       <div className="flex items-center justify-center gap-4">
-      <motion.a
-        href="/my_CV.pdf"
-        download="Mohamed_Bahaa_CV.pdf"
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{
-          delay: 0.7,
-          duration: 1,
-          ease: "easeInOut",
-        }}
-        className="mt-8 px-6 py-3 bg-cyan-500 text-white rounded-lg text-lg font-medium hover:bg-cyan-600 transition-colors"
-      >
-        Download CV
-      </motion.a>
-      
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{
-          delay: 0.7,
-          duration: 1,
-          ease: "easeInOut",
-        }}
-      className="mt-8 px-6 py-3 bg-cyan-500 text-white rounded-lg text-lg font-medium hover:bg-cyan-600 transition-colors">
-        <Link 
-          href="/about" 
+        <motion.a
+          href="/my_CV.pdf"
+          download="Mohamed_Bahaa_CV.pdf"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{
+            delay: 0.7,
+            duration: 1,
+            ease: "easeInOut",
+          }}
+          className="mt-8 px-6 py-3 bg-cyan-500 text-white rounded-lg text-lg font-medium hover:bg-cyan-600 transition-colors"
         >
-          About Me
-        </Link>
-      </motion.div>
+          Download CV
+        </motion.a>
+
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{
+            delay: 0.7,
+            duration: 1,
+            ease: "easeInOut",
+          }}
+          className="mt-8 px-6 py-3 bg-cyan-500 text-white rounded-lg text-lg font-medium hover:bg-cyan-600 transition-colors">
+          <Link
+            href="/about"
+          >
+            About Me
+          </Link>
+        </motion.div>
       </div>
 
     </LampContainer>
