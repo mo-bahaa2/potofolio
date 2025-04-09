@@ -60,9 +60,6 @@ export default function Contact() {
           transition={{ duration: 0.6 }}
           className="space-y-4"
         >
-          <a href="https://facebook.com" className="flex items-center gap-2 hover:text-cyan-400 transition">
-            <FaFacebook size={24} /> Facebook
-          </a>
           <a href="https://github.com/mo-bahaa2" className="flex items-center gap-2 hover:text-cyan-400 transition">
             <FaGithub size={24} /> GitHub
           </a>
