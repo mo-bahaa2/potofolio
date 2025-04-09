@@ -19,6 +19,7 @@ export default function Projects() {
   return (
     <section className='min-h-screen bg-[#020618] py-16'>
       <div className='px-4 md:px-20'>
+        {/* title */}
         <motion.h1
           initial={{ y: -50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -28,6 +29,7 @@ export default function Projects() {
           my projects
           <span className="absolute left-1/2 -bottom-4 -translate-x-1/2 w-2/3 h-8 rounded-full blur-2xl bg-cyan-400/20 "></span>
         </motion.h1>
+        {/* display cards with map on object of arr  */}
         <div className='flex flex-wrap justify-center gap-8'>
           {cards.map((card, index) => (
             <motion.div
@@ -69,6 +71,7 @@ export default function Projects() {
               </div>
             </motion.div>
           ))}
+          {/* card of behance */}
           <div className='w-full sm:w-1/2 md:w-1/3 lg:w-1/4 bg-white/10 border border-white/10 backdrop-blur rounded-2xl p-4 flex flex-col items-center'>
             <a href='https://www.behance.net/gallery/222158451/Comfort-Trip' target='_blank' rel='noopener noreferrer'>
               <Image
@@ -89,7 +92,7 @@ export default function Projects() {
               >
                 Design
               </a>
-              
+
             </div>
           </div>
         </div>
