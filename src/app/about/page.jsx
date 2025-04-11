@@ -25,7 +25,7 @@ export default function About() {
         className=' flex flex-col md:flex-row items-center justify-center gap-2.5 mx-auto p-14'>
         {/* image */}
         <div className=' md:w-4/12'>
-          <Image src="/profile.jpg"
+          <Image src="/prof.png"
             width={500}
             height={500}
             alt='profile image'
