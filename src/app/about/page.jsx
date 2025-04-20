@@ -34,12 +34,11 @@ export default function About() {
         {/* about me */}
         <div className='pt-5 md:pt-0 md:w-6/12'>
           <p className='text-white text-xl'>
-            Motivated Computer Science student with strong skills in software development, FrontEnd , C++,
-            Python, object-oriented programming (OOP), data structures, fundamental ui/ux, and design
-            patterns. Passionate about creating efficient, innovative software solutions and integrating
-            software with hardware when possible. Eager to apply my knowledge and experience to
-            challenging projects that leverage both technical problem-solving and collaboration within a
-            dynamic development team.
+            I am a motivated male Computer Science student with a strong foundation in software development,
+            Front-End technologies, C++, Python, object-oriented programming (OOP), data structures, basic UI/UX principles,
+             and design patterns. I am passionate about building efficient and innovative software solutions, and I enjoy integrating software with hardware when possible. I am eager to apply my knowledge and hands-on experience to real-world projects that demand strong problem-solving skills and teamwork within a dynamic development environment.
+
+
           </p>
         </div>
 
@@ -61,7 +60,7 @@ export default function About() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
         className='pt-5'>
-          <Skills/>
+        <Skills />
       </motion.div>
     </div>
 
