@@ -6,7 +6,7 @@ import Skills from '../_skills/page';
 export default function About() {
   return <>
 
-    <div className='min-h-screen bg-[#020618] py-9  '>
+    <div className='min-h-screen bg-[#020618] py-9   '>
       <motion.h1
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}

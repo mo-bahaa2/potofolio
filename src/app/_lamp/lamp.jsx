@@ -3,9 +3,12 @@ import React from "react";
 import { motion } from "motion/react";
 import { cn } from "../lib/utils";
 import Link from "next/link";
+import About from "../about/page";
+import Projects from "../projects/page";
+import Contact from "../contact/page";
 
 export function LampDemo() {
-  return (
+  return <>
     <LampContainer>
       <motion.h1
         initial={{ opacity: 0.5, y: 100 }}
@@ -60,7 +63,10 @@ export function LampDemo() {
       </div>
 
     </LampContainer>
-  );
+    <About/>
+    <Projects/>
+    <Contact/>
+  </>;
 }
 
 export const LampContainer = ({
