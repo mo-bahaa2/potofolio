@@ -21,7 +21,7 @@ export default function Navbar() {
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-          <span className="self-center text-2xl font-semibold whitespace-nowrap text-blue-600 dark:text-white">MB</span>
+          <span className="self-center text-4xl font-semibold whitespace-nowrap text-blue-600 dark:text-white">MB</span>
         </Link>
 
         {/* Mobile Right Controls (Hamburger + Button) */}
@@ -56,6 +56,9 @@ export default function Navbar() {
             </li>
             <li>
               <Link href="/about" className={linkClass('/about')} onClick={handleCloseMenu}>About</Link>
+            </li>
+            <li>
+              <Link href="/services" className={linkClass('/services')} onClick={handleCloseMenu}>Services</Link>
             </li>
             <li>
               <Link href="/projects" className={linkClass('/projects')} onClick={handleCloseMenu}>Projects</Link>

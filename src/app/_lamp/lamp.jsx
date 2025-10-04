@@ -6,6 +6,7 @@ import Link from "next/link";
 import About from "../about/page";
 import Projects from "../projects/page";
 import Contact from "../contact/page";
+import Services from "../services/page";
 
 export function LampDemo() {
   return <>
@@ -65,6 +66,7 @@ export function LampDemo() {
     </LampContainer>
     <About/>
     <Projects/>
+    <Services/>
     <Contact/>
   </>;
 }

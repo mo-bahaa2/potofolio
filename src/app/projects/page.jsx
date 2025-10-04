@@ -1,9 +1,11 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image'
 import { motion } from "framer-motion";
 
 export default function Projects() {
+  const [activeFilter, setActiveFilter] = useState('all');
+
   // Development Projects Array
   const devProjects = [
     { 
@@ -12,6 +14,7 @@ export default function Projects() {
       name: 'E-commerce web', 
       demo: 'https://fresh-cart-ecru-tau.vercel.app/', 
       github: 'https://github.com/mo-bahaa2/fresh-cart',
+      category: 'frontend',
       isFreelance: false 
     },
     { 
@@ -20,6 +23,7 @@ export default function Projects() {
       name: 'Cozy-classic', 
       demo: 'https://mo-bahaa2.github.io/Cozy-classic/index.html', 
       github: 'https://github.com/mo-bahaa2/Cozy-classic.git',
+      category: 'frontend',
       isFreelance: true 
     },
     { 
@@ -28,6 +32,7 @@ export default function Projects() {
       name: 'game reviewer', 
       demo: 'https://mo-bahaa2.github.io/Game-review/', 
       github: 'https://github.com/mo-bahaa2/Game-review',
+      category: 'frontend',
       isFreelance: false 
     },
     { 
@@ -36,6 +41,7 @@ export default function Projects() {
       name: 'quize app', 
       demo: 'https://mo-bahaa2.github.io/Quize-App/', 
       github: 'https://github.com/mo-bahaa2/Quize-App',
+      category: 'frontend',
       isFreelance: false 
     },
     { 
@@ -44,6 +50,7 @@ export default function Projects() {
       name: 'react framework', 
       demo: 'https://react-fream-work.vercel.app/', 
       github: 'https://github.com/mo-bahaa2/React-freamWork.git',
+      category: 'frontend',
       isFreelance: false 
     },
     { 
@@ -52,6 +59,7 @@ export default function Projects() {
       name: 'weather app', 
       demo: 'https://mo-bahaa2.github.io/wather/', 
       github: 'https://github.com/mo-bahaa2/wather',
+      category: 'frontend',
       isFreelance: false 
     },
     { 
@@ -60,6 +68,7 @@ export default function Projects() {
       name: 'random quote', 
       demo: 'https://mo-bahaa2.github.io/Random-Quote/', 
       github: 'https://github.com/mo-bahaa2/Random-Quote.git',
+      category: 'frontend',
       isFreelance: false 
     },
     { 
@@ -68,6 +77,7 @@ export default function Projects() {
       name: 'bookmark', 
       demo: 'https://mo-bahaa2.github.io/Bookmark/', 
       github: 'https://github.com/mo-bahaa2/Bookmark.git',
+      category: 'frontend',
       isFreelance: false 
     },
     {
@@ -76,6 +86,7 @@ export default function Projects() {
       name: 'danisels', 
       demo: 'https://mo-bahaa2.github.io/Daniels/', 
       github: 'https://github.com/mo-bahaa2/Daniels',
+      category: 'frontend',
       isFreelance: false 
     }
   ];
@@ -87,6 +98,7 @@ export default function Projects() {
       src: '/MacBook Air - 2.png',
       name: 'Comfort Trip UI/UX',
       demo: 'https://www.behance.net/gallery/222158451/Comfort-Trip',
+      category: 'uiux',
       isFreelance: false
     },
     {
@@ -94,6 +106,7 @@ export default function Projects() {
       src: '/cover.png',
       name: 'Motorji',
       demo: 'https://www.behance.net/gallery/227124473/Motorji',
+      category: 'uiux',
       isFreelance: false
     },
     {
@@ -101,30 +114,56 @@ export default function Projects() {
       src: '/Frame 190.png',
       name: 'Soria News',
       demo: 'https://www.behance.net/gallery/229326663/Soria-News',
+      category: 'uiux',
       isFreelance: true
     },
   ];
 
+  // Combine all projects
+  const allProjects = [...devProjects, ...designProjects];
+
+  // Filter projects based on active filter
+  const filteredProjects = allProjects.filter(project => {
+    if (activeFilter === 'all') return true;
+    if (activeFilter === 'freelance') return project.isFreelance;
+    return project.category === activeFilter;
+  });
+
+  // Filter buttons data
+  const filters = [
+    { id: 'all', label: 'All Projects', count: allProjects.length },
+    { id: 'frontend', label: 'Frontend', count: devProjects.length },
+    { id: 'uiux', label: 'UI/UX', count: designProjects.length },
+    { id: 'freelance', label: 'Freelance', count: allProjects.filter(p => p.isFreelance).length }
+  ];
+
   // Project Card Component
-  const ProjectCard = ({ project, index, type = 'dev' }) => (
+  const ProjectCard = ({ project, index }) => (
     <motion.div
       key={project.id}
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, delay: index * 0.1 }}
-      viewport={{ once: true }}
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.9 }}
+      transition={{ duration: 0.4, delay: index * 0.05 }}
       className='bg-white/10 border border-white/10 backdrop-blur rounded-2xl p-4 flex flex-col items-center relative hover:bg-white/20 transition-colors'
     >
-      {/* Freelance Badge - Top Right */}
+      {/* Freelance Badge */}
       {project.isFreelance && (
-        <div className="absolute -top-2 -right-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full flex items-center">
+        <div className="absolute -top-2 -right-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full flex items-center z-10">
           <span className="w-2 h-2 bg-white rounded-full mr-1"></span>
           Freelance
         </div>
       )}
       
+      {/* Category Badge */}
+      <div className={`absolute -top-2 -left-2 text-white text-xs font-bold px-2 py-1 rounded-full z-10 ${
+        project.category === 'uiux' ? 'bg-purple-500' : 'bg-blue-500'
+      }`}>
+        {project.category === 'uiux' ? 'UI/UX' : 'Frontend'}
+      </div>
+      
       {/* Project Image */}
-      <a href={project.demo} target='_blank' rel='noopener noreferrer' className="w-full">
+      <a href={project.demo} target='_blank' rel='noopener noreferrer' className="w-full mt-2">
         <Image
           src={project.src}
           alt={project.name}
@@ -145,10 +184,10 @@ export default function Projects() {
           rel='noopener noreferrer'
           className='text-sm px-4 py-1 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition flex-1 text-center'
         >
-          {type === 'dev' ? 'Live Demo' : 'View Design'}
+          {project.category === 'uiux' ? 'View Design' : 'Live Demo'}
         </a>
         
-        {type === 'dev' && project.github && (
+        {project.github && (
           <a
             href={project.github}
             target='_blank'
@@ -159,14 +198,6 @@ export default function Projects() {
           </a>
         )}
       </div>
-      
-      {/* Freelance Indicator - Bottom */}
-      {project.isFreelance && (
-        <div className="mt-2 flex items-center justify-center text-green-400 text-sm w-full">
-          <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
-          Freelance Project
-        </div>
-      )}
     </motion.div>
   );
 
@@ -183,47 +214,51 @@ export default function Projects() {
           My Projects
           <span className="absolute left-1/2 -bottom-4 -translate-x-1/2 w-2/3 h-8 rounded-full blur-2xl bg-cyan-400/20"></span>
         </motion.h1>
-        
-        {/* Development Projects Section */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
+
+        {/* Filter Buttons */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="flex flex-wrap justify-center gap-4 mb-12"
         >
-          <h2 className="text-2xl font-bold text-white mb-6 pl-2 border-l-4 border-cyan-400">Development Projects</h2>
-          <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
-            {devProjects.map((project, index) => (
-              <ProjectCard 
-                project={project} 
-                index={index} 
-                key={`dev-${project.id}`} 
-                type="dev" 
-              />
-            ))}
-          </div>
+          {filters.map((filter) => (
+            <button
+              key={filter.id}
+              onClick={() => setActiveFilter(filter.id)}
+              className={`px-6 py-2 rounded-full font-semibold transition-all duration-300 ${
+                activeFilter === filter.id
+                  ? 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg scale-105'
+                  : 'bg-white/10 text-gray-300 hover:bg-white/20'
+              }`}
+            >
+              {filter.label} <span className="ml-1 text-sm">({filter.count})</span>
+            </button>
+          ))}
         </motion.div>
 
-        {/* Design Projects Section */}
-        {designProjects.length > 0 && (
+        {/* Projects Grid */}
+        <motion.div
+          layout
+          className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'
+        >
+          {filteredProjects.map((project, index) => (
+            <ProjectCard 
+              project={project} 
+              index={index} 
+              key={`${activeFilter}-${project.id}-${project.category}`}
+            />
+          ))}
+        </motion.div>
+
+        {/* No Results Message */}
+        {filteredProjects.length === 0 && (
           <motion.div
             initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="mt-16"
+            animate={{ opacity: 1 }}
+            className="text-center text-gray-400 mt-12"
           >
-            <h2 className="text-2xl font-bold text-white mb-6 pl-2 border-l-4 border-cyan-400">Design Projects</h2>
-            <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
-              {designProjects.map((project, index) => (
-                <ProjectCard 
-                  project={project} 
-                  index={index} 
-                  key={`design-${project.id}`} 
-                  type="design" 
-                />
-              ))}
-            </div>
+            <p className="text-xl">No projects found in this category.</p>
           </motion.div>
         )}
       </div>

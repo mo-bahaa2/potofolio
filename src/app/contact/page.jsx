@@ -1,10 +1,21 @@
 "use client";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaFacebook, FaGithub, FaLinkedin, FaBehance } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaBehance } from "react-icons/fa";
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
+  const [selectedService, setSelectedService] = useState("");
+
+  const services = [
+    { value: "", label: "Select a Service" },
+    { value: "uiux", label: "UI/UX Design" },
+    { value: "frontend", label: "Frontend Development" },
+    { value: "fullstack", label: "Full Stack Development" },
+    { value: "freelance", label: "Freelance Project" },
+    { value: "consultation", label: "Consultation" },
+    { value: "other", label: "Other" }
+  ];
 
   // Hide toast after 3 seconds
   useEffect(() => {
@@ -86,25 +97,53 @@ export default function Contact() {
             name="name"
             placeholder="Your Name"
             required
-            className="w-full px-4 py-2 rounded-lg bg-[#1b1e3a] text-white outline-none"
+            className="w-full px-4 py-2 rounded-lg bg-[#1b1e3a] text-white outline-none focus:ring-2 focus:ring-cyan-500 transition"
           />
           <input
             type="email"
             name="email"
             placeholder="Your Email"
             required
-            className="w-full px-4 py-2 rounded-lg bg-[#1b1e3a] text-white outline-none"
+            className="w-full px-4 py-2 rounded-lg bg-[#1b1e3a] text-white outline-none focus:ring-2 focus:ring-cyan-500 transition"
           />
+
+          {/* Service Selection Dropdown */}
+          <div className="relative">
+            <select
+              name="service"
+              value={selectedService}
+              onChange={(e) => setSelectedService(e.target.value)}
+              required
+              className="w-full px-4 py-2 rounded-lg bg-[#1b1e3a] text-white outline-none appearance-none cursor-pointer focus:ring-2 focus:ring-cyan-500 transition"
+            >
+              {services.map((service) => (
+                <option 
+                  key={service.value} 
+                  value={service.value}
+                  disabled={service.value === ""}
+                >
+                  {service.label}
+                </option>
+              ))}
+            </select>
+            <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
+              <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+          </div>
+
           <textarea
             name="message"
             placeholder="Your Message"
             rows="5"
             required
-            className="w-full px-4 py-2 rounded-lg bg-[#1b1e3a] text-white outline-none"
+            className="w-full px-4 py-2 rounded-lg bg-[#1b1e3a] text-white outline-none focus:ring-2 focus:ring-cyan-500 transition resize-none"
           ></textarea>
+
           <button
             type="submit"
-            className="bg-cyan-500 hover:bg-cyan-600 transition w-full py-2 rounded-lg font-bold hover:cursor-pointer"
+            className="bg-cyan-500 hover:bg-cyan-600 transition w-full py-2 rounded-lg font-bold hover:cursor-pointer hover:shadow-lg hover:scale-105 active:scale-95"
           >
             Send Message
           </button>
