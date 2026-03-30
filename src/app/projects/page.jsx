@@ -117,6 +117,14 @@ export default function Projects() {
       category: 'uiux',
       isFreelance: true
     },
+    {
+      id: 4,
+      src: '/winner.png',
+      name: 'UI UX Challenges Problems Solving',
+      demo: 'https://www.behance.net/gallery/241167183/ENXERA-Challenge-uiux-problem-solving',
+      category: 'uiux',
+      isFreelance: false
+    },
   ];
 
   // Combine all projects
