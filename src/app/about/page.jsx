@@ -34,11 +34,13 @@ export default function About() {
         {/* about me */}
         <div className='pt-5 md:pt-0 md:w-6/12'>
           <p className='text-white text-xl'>
-            I am a motivated male Computer Science student with a strong foundation in software development,
-            Front-End technologies, C++, Python, object-oriented programming (OOP), data structures, basic UI/UX principles,
-             and design patterns. I am passionate about building efficient and innovative software solutions, and I enjoy integrating software with hardware when possible. I am eager to apply my knowledge and hands-on experience to real-world projects that demand strong problem-solving skills and teamwork within a dynamic development environment.
+            I’m a UI/UX Designer and Front-End Developer passionate about crafting intuitive, visually engaging, and user-centered digital experiences.
 
+            My main focus is understanding user behavior, solving real problems through design, and turning ideas into seamless interfaces. I create modern, responsive designs and bring them to life using React and front-end technologies.
 
+            I also leverage AI-powered tools to enhance my design process, generate ideas faster, and build smarter, more efficient solutions.
+
+            With a strong eye for detail and a deep interest in user psychology, I aim to design products that are not just beautiful — but meaningful and easy to use.
           </p>
         </div>
 

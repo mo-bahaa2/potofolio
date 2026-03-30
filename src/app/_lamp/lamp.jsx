@@ -32,7 +32,7 @@ export function LampDemo() {
       </motion.p>
       <div className="flex items-center justify-center gap-4">
         <motion.a
-          href="/my_CV.pdf"
+          href="/Mohame Bahaa Cv.pdf"
           download="Mohamed_Bahaa_CV.pdf"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -64,10 +64,10 @@ export function LampDemo() {
       </div>
 
     </LampContainer>
-    <About/>
-    <Projects/>
-    <Services/>
-    <Contact/>
+    <About />
+    <Projects />
+    <Services />
+    <Contact />
   </>;
 }
 
