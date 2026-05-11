@@ -6,6 +6,7 @@ import { FaGithub, FaLinkedin, FaBehance } from "react-icons/fa";
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
   const [selectedService, setSelectedService] = useState("");
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const services = [
     { value: "", label: "Select a Service" },
@@ -109,28 +110,66 @@ export default function Contact() {
 
           {/* Service Selection Dropdown */}
           <div className="relative">
+            {/* Visually hidden native select for form submission and validation */}
             <select
               name="service"
               value={selectedService}
               onChange={(e) => setSelectedService(e.target.value)}
               required
-              className="w-full px-4 py-2 rounded-lg bg-[#1b1e3a] text-white outline-none appearance-none cursor-pointer focus:ring-2 focus:ring-cyan-500 transition"
+              className="absolute opacity-0 w-0 h-0 pointer-events-none"
             >
-              {services.map((service) => (
-                <option 
-                  key={service.value} 
-                  value={service.value}
-                  disabled={service.value === ""}
-                >
-                  {service.label}
-                </option>
+              <option value="" disabled>Select a Service</option>
+              {services.filter(s => s.value !== "").map(s => (
+                <option key={s.value} value={s.value}>{s.label}</option>
               ))}
             </select>
-            <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-              <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+
+            {/* Custom UI Dropdown */}
+            <div 
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              className={`w-full px-4 py-2 rounded-lg bg-[#1b1e3a] text-white outline-none cursor-pointer border transition flex justify-between items-center ${
+                isDropdownOpen ? 'border-cyan-500 ring-2 ring-cyan-500/50' : 'border-transparent hover:border-cyan-500/50'
+              }`}
+            >
+              <span className={selectedService === "" ? "text-gray-400" : "text-white"}>
+                {selectedService === "" ? "Select a Service" : services.find(s => s.value === selectedService)?.label}
+              </span>
+              <motion.svg 
+                animate={{ rotate: isDropdownOpen ? 180 : 0 }}
+                transition={{ duration: 0.3 }}
+                className="w-4 h-4 text-cyan-400" 
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
+              >
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-              </svg>
+              </motion.svg>
             </div>
+
+            <AnimatePresence>
+              {isDropdownOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute z-50 w-full mt-2 bg-[#1b1e3a] border border-cyan-500/30 rounded-lg shadow-xl overflow-hidden"
+                >
+                  {services.filter(s => s.value !== "").map((service) => (
+                    <div
+                      key={service.value}
+                      onClick={() => {
+                        setSelectedService(service.value);
+                        setIsDropdownOpen(false);
+                      }}
+                      className="px-4 py-3 text-gray-200 hover:bg-cyan-500/20 hover:text-cyan-400 cursor-pointer transition-colors border-b border-white/5 last:border-b-0"
+                    >
+                      {service.label}
+                    </div>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
 
           <textarea

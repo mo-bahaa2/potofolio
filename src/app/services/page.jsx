@@ -99,45 +99,50 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300 hover:scale-105"
+              className="relative group bg-[#0e1229] rounded-2xl p-8 border border-cyan-500/20 hover:border-cyan-500/50 hover:shadow-[0_0_20px_rgba(6,182,212,0.2)] transition-all duration-300 flex flex-col h-full overflow-hidden"
             >
+              {/* Hover glow effect background */}
+              <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+
               {/* Service Header */}
-              <div className="flex items-center gap-4 mb-6">
-                <div className={`p-4 rounded-xl bg-gradient-to-r ${service.color}`}>
-                  <IconComponent className="text-white text-3xl" />
+              <div className="relative z-10 flex flex-col mb-6">
+                <div className="w-16 h-16 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center mb-6 shadow-[0_0_15px_rgba(6,182,212,0.15)] group-hover:scale-110 group-hover:border-cyan-400 transition-all duration-300">
+                  <IconComponent className="text-cyan-400 text-3xl drop-shadow-[0_0_8px_rgba(6,182,212,0.8)]" />
                 </div>
-                <div>
-                  <h3 className="text-2xl font-bold text-white">{service.title}</h3>
-                  <p className="text-gray-400 text-sm mt-1">{service.description}</p>
-                </div>
+                <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors duration-300">{service.title}</h3>
+                <p className="text-gray-400 text-sm leading-relaxed">{service.description}</p>
               </div>
 
               {/* Features List */}
-              <div className="space-y-4 mt-6">
+              <div className="relative z-10 space-y-3 mt-2 flex-grow">
                 {service.features.map((feature, idx) => (
                   <motion.div
                     key={idx}
-                    initial={{ opacity: 0, x: -20 }}
+                    initial={{ opacity: 0, x: -10 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.4, delay: idx * 0.05 }}
                     viewport={{ once: true }}
-                    className="flex items-center gap-3"
+                    className="flex items-start gap-3"
                   >
-                    <FaCheckCircle className="text-green-500 text-xl flex-shrink-0" />
-                    <span className="text-gray-300 text-base">{feature}</span>
+                    <div className="mt-1 flex-shrink-0">
+                      <FaCheckCircle className="text-cyan-500/80 text-sm drop-shadow-[0_0_5px_rgba(6,182,212,0.5)]" />
+                    </div>
+                    <span className="text-gray-300 text-sm">{feature}</span>
                   </motion.div>
                 ))}
               </div>
 
               {/* CTA Button */}
-              <motion.a
-                href="/contact"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className={`mt-8 block text-center bg-gradient-to-r ${service.color} text-white font-semibold py-3 px-4 rounded-lg hover:shadow-lg transition-all`}
-              >
-                Get Started
-              </motion.a>
+              <div className="relative z-10 mt-8">
+                <motion.a
+                  href="/contact"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="flex w-full items-center justify-center bg-[#020618] text-cyan-400 border border-cyan-500/30 font-semibold py-3 px-4 rounded-xl hover:bg-cyan-500/10 hover:border-cyan-400 hover:shadow-[0_0_15px_rgba(6,182,212,0.3)] transition-all duration-300"
+                >
+                  Get Started
+                </motion.a>
+              </div>
             </motion.div>
           );
         })}
