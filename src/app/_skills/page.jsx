@@ -14,7 +14,8 @@ const skills = [
     { name: "SASS", icon: "/image/material-icon-theme--sass.svg" }, { name: "React", icon: "/image/devicon--react.svg" },
     { name: "Next.js", icon: "/image/devicon--nextjs.svg" },
     { name: "Figma", icon: "/image/logos--figma.svg" },
-
+    { name: "Webflow", icon: "/image/logos--webflow.svg" },
+    { name: "Miro", icon: "/image/logos--miro-icon.svg" }
 ];
 
 export default function Skills() {

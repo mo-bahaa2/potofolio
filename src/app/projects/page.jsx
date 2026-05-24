@@ -10,15 +10,6 @@ export default function Projects() {
   const devProjects = [
     { 
       id: 1, 
-      src: '/frehCart.png', 
-      name: 'E-commerce web', 
-      demo: 'https://fresh-cart-ecru-tau.vercel.app/', 
-      github: 'https://github.com/mo-bahaa2/fresh-cart',
-      category: 'frontend',
-      isFreelance: false 
-    },
-    { 
-      id: 2, 
       src: '/cozie.png', 
       name: 'Cozy-classic', 
       demo: 'https://mo-bahaa2.github.io/Cozy-classic/index.html', 
@@ -27,7 +18,25 @@ export default function Projects() {
       isFreelance: true 
     },
     { 
+      id: 2, 
+      src: '/frehCart.png', 
+      name: 'E-commerce web', 
+      demo: 'https://fresh-cart-ecru-tau.vercel.app/', 
+      github: 'https://github.com/mo-bahaa2/fresh-cart',
+      category: 'frontend',
+      isFreelance: false 
+    },
+    { 
       id: 3, 
+      src: '/wather.png', 
+      name: 'weather app', 
+      demo: 'https://mo-bahaa2.github.io/wather/', 
+      github: 'https://github.com/mo-bahaa2/wather',
+      category: 'frontend',
+      isFreelance: false 
+    },
+    { 
+      id: 4, 
       src: '/gamereviewer.png', 
       name: 'game reviewer', 
       demo: 'https://mo-bahaa2.github.io/Game-review/', 
@@ -36,7 +45,7 @@ export default function Projects() {
       isFreelance: false 
     },
     { 
-      id: 4, 
+      id: 5, 
       src: '/quize_app.png', 
       name: 'quize app', 
       demo: 'https://mo-bahaa2.github.io/Quize-App/', 
@@ -45,20 +54,11 @@ export default function Projects() {
       isFreelance: false 
     },
     { 
-      id: 5, 
+      id: 6, 
       src: '/start_fream _work.png', 
       name: 'react framework', 
       demo: 'https://react-fream-work.vercel.app/', 
       github: 'https://github.com/mo-bahaa2/React-freamWork.git',
-      category: 'frontend',
-      isFreelance: false 
-    },
-    { 
-      id: 6, 
-      src: '/wather.png', 
-      name: 'weather app', 
-      demo: 'https://mo-bahaa2.github.io/wather/', 
-      github: 'https://github.com/mo-bahaa2/wather',
       category: 'frontend',
       isFreelance: false 
     },
@@ -94,23 +94,23 @@ export default function Projects() {
   // Design Projects Array
   const designProjects = [
     {
+      id: 0,
+      src: '/winner2.png',
+      name: 'UI UX Challenges Problems Solving session 2',
+      demo: '#',
+      category: 'uiux',
+      isFreelance: false
+    },
+    {
       id: 1,
-      src: '/MacBook Air - 2.png',
-      name: 'Comfort Trip UI/UX',
-      demo: 'https://www.behance.net/gallery/222158451/Comfort-Trip',
+      src: '/winner1.png',
+      name: 'UI UX Challenges Problems Solving session 1',
+      demo: 'https://www.behance.net/gallery/241167183/ENXERA-Challenge-uiux-problem-solving',
       category: 'uiux',
       isFreelance: false
     },
     {
       id: 2,
-      src: '/cover.png',
-      name: 'Motorji',
-      demo: 'https://www.behance.net/gallery/227124473/Motorji',
-      category: 'uiux',
-      isFreelance: false
-    },
-    {
-      id: 3,
       src: '/Frame 190.png',
       name: 'Soria News',
       demo: 'https://www.behance.net/gallery/229326663/Soria-News',
@@ -118,17 +118,25 @@ export default function Projects() {
       isFreelance: true
     },
     {
+      id: 3,
+      src: '/MacBook Air - 2.png',
+      name: 'Comfort Trip UI/UX',
+      demo: 'https://www.behance.net/gallery/222158451/Comfort-Trip',
+      category: 'uiux',
+      isFreelance: false
+    },
+    {
       id: 4,
-      src: '/winner.png',
-      name: 'UI UX Challenges Problems Solving',
-      demo: 'https://www.behance.net/gallery/241167183/ENXERA-Challenge-uiux-problem-solving',
+      src: '/cover.png',
+      name: 'Motorji',
+      demo: 'https://www.behance.net/gallery/227124473/Motorji',
       category: 'uiux',
       isFreelance: false
     },
   ];
 
-  // Combine all projects
-  const allProjects = [...devProjects, ...designProjects];
+  // Combine all projects (UI/UX first, then Front-End)
+  const allProjects = [...designProjects, ...devProjects];
 
   // Filter projects based on active filter
   const filteredProjects = allProjects.filter(project => {
