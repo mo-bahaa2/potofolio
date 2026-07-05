@@ -25,11 +25,11 @@ export default function About() {
         className=' flex flex-col md:flex-row items-center justify-center gap-2.5 mx-auto p-14'>
         {/* image */}
         <div className=' md:w-4/12'>
-          <Image src="/prof.png"
-            width={500}
-            height={500}
+          <Image src="/me.png"
+            width={800}
+            height={800}
             alt='profile image'
-            className='none rounded-3xl md:w-80' />
+            className='none rounded-3xl md:w-full' />
         </div>
         {/* about me */}
         <div className='pt-5 md:pt-0 md:w-6/12'>

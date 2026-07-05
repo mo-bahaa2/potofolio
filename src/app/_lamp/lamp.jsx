@@ -28,11 +28,11 @@ export function LampDemo() {
           delay: 0.3,
           duration: 1,
           ease: "easeInOut",
-        }} className="mt-8 bg-gradient-to-br from-slate-300 to-slate-500 py-4 bg-clip-text text-center text-4xl capitalize font-medium tracking-tight text-transparent md:text-4xl">front end developer & ui/ux designer
+        }} className="mt-8 bg-gradient-to-br from-slate-300 to-slate-500 py-4 bg-clip-text text-center text-4xl capitalize font-medium tracking-tight text-transparent md:text-4xl">ui/ux designer  & front end developer
       </motion.p>
       <div className="flex items-center justify-center gap-4">
         <motion.a
-          href="/Mohame Bahaa Cv.pdf"
+          href="/Mohamed_Bahaa_CV.pdf"
           download="Mohamed_Bahaa_CV.pdf"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
