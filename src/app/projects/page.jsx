@@ -50,6 +50,16 @@ export default function Projects() {
   const portfolioProjects = [
     // --- NEWLY ADDED FROM CV ---
     { 
+      id: "new-minders", 
+      src: '/magazine_minders.png', 
+      name: 'Minders Magazine — App-like Reading Experience', 
+      demo: 'https://minders-magazine.vercel.app/', 
+      github: null,
+      type: 'personal',
+      category: ['Front-End', 'UI/UX'],
+      skills: ['UI/UX', 'React', 'TypeScript', 'Tailwind', 'Framer Motion', 'PWA']
+    },
+    { 
       id: "new-1", 
       src: '/EduBot.png', 
       name: 'Edubot — AI-Powered Educational Platform', 
@@ -70,6 +80,24 @@ export default function Projects() {
       category: 'UI/UX',
       skills: ['UI/UX', 'Wireframing', 'Prototyping'],
       isInternal: true
+    },
+    {
+      id: "old-ui-0",
+      src: '/winner2.png',
+      name: 'UI UX Challenges Problems Solving session 2',
+      demo: 'https://www.behance.net/gallery/249939807/winner-NEXERA-CHALLANGE-Session2',
+      type: 'personal',
+      category: 'UI/UX',
+      skills: ['UI/UX']
+    },
+    {
+      id: "old-ui-1",
+      src: '/winner1.png',
+      name: 'UI UX Challenges Problems Solving session 1',
+      demo: 'https://www.behance.net/gallery/241167183/ENXERA-Challenge-uiux-problem-solving',
+      type: 'personal',
+      category: 'UI/UX',
+      skills: ['UI/UX']
     },
     { 
       id: "new-4", 
@@ -176,24 +204,6 @@ export default function Projects() {
 
     // --- OLD UI/UX PROJECTS ---
     {
-      id: "old-ui-0",
-      src: '/winner2.png',
-      name: 'UI UX Challenges Problems Solving session 2',
-      demo: '#',
-      type: 'personal',
-      category: 'UI/UX',
-      skills: ['UI/UX']
-    },
-    {
-      id: "old-ui-1",
-      src: '/winner1.png',
-      name: 'UI UX Challenges Problems Solving session 1',
-      demo: 'https://www.behance.net/gallery/241167183/ENXERA-Challenge-uiux-problem-solving',
-      type: 'personal',
-      category: 'UI/UX',
-      skills: ['UI/UX']
-    },
-    {
       id: "old-ui-2",
       src: '/Frame 190.png',
       name: 'Soria News',
@@ -227,7 +237,13 @@ export default function Projects() {
     if (activeFilter !== 'all' && project.type !== activeFilter) return false;
     
     // Secondary Filter (Only applies when 'personal' or 'freelance' is selected, if they want to filter further)
-    if (activeSubFilter !== 'all' && project.category !== activeSubFilter) return false;
+    if (activeSubFilter !== 'all') {
+      if (Array.isArray(project.category)) {
+        if (!project.category.includes(activeSubFilter)) return false;
+      } else {
+        if (project.category !== activeSubFilter) return false;
+      }
+    }
 
     return true;
   });
@@ -239,7 +255,7 @@ export default function Projects() {
   ];
 
   const getSubFiltersCount = (category) => {
-    return portfolioProjects.filter(p => p.type === activeFilter && p.category === category).length;
+    return portfolioProjects.filter(p => p.type === activeFilter && (Array.isArray(p.category) ? p.category.includes(category) : p.category === category)).length;
   };
 
   return (
@@ -412,7 +428,7 @@ export default function Projects() {
                         {project.type === 'freelance' ? 'Freelance' : 'Personal'}
                       </span>
                       <span className="px-3 py-1 text-xs font-bold rounded-full backdrop-blur-md border bg-slate-800/50 text-gray-300 border-white/10">
-                        {project.category}
+                        {Array.isArray(project.category) ? project.category.join(' & ') : project.category}
                       </span>
                     </div>
                   </div>
