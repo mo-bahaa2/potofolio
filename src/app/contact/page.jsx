@@ -12,7 +12,6 @@ export default function Contact() {
     { value: "", label: "Select a Service" },
     { value: "uiux", label: "UI/UX Design" },
     { value: "frontend", label: "Frontend Development" },
-    { value: "fullstack", label: "Full Stack Development" },
     { value: "freelance", label: "Freelance Project" },
     { value: "consultation", label: "Consultation" },
     { value: "other", label: "Other" }
@@ -29,7 +28,7 @@ export default function Contact() {
   }, [submitted]);
 
   return (
-    <div className="min-h-screen bg-[#020618] text-white p-10 relative">
+    <div id="contact" className="min-h-screen bg-[#020618] text-white p-10 relative">
       {/* Toast Notification */}
       <AnimatePresence>
         {submitted && (

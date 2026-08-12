@@ -34,21 +34,7 @@ export default function Services() {
       icon: FaCode,
       color: "from-cyan-500 to-blue-500"
     },
-    {
-      id: 3,
-      title: "Full Stack Development",
-      description: "Complete web solutions from frontend to backend",
-      features: [
-        "MERN Stack Development",
-        "Database Design & Management",
-        "RESTful API Development",
-        "Authentication & Authorization",
-        "Deployment & Hosting",
-        "Maintenance & Support"
-      ],
-      icon: FaRocket,
-      color: "from-green-500 to-teal-500"
-    },
+
     {
       id: 4,
       title: "Freelance Projects",
@@ -67,7 +53,7 @@ export default function Services() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#020618] py-16 px-4">
+    <div id="services" className="min-h-screen bg-[#020618] py-16 px-4">
       {/* Page Title */}
       <motion.h1
         initial={{ y: -50, opacity: 0 }}

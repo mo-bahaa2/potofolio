@@ -1,12 +1,40 @@
 "use client";
 import Image from 'next/image'
-import React from 'react'
-import { motion } from "framer-motion";
+import React, { useState } from 'react'
+import { motion, AnimatePresence } from "framer-motion";
+import Link from 'next/link';
 import Skills from '../_skills/page';
+
+const certificateAchievements = [
+  // Nexera Achievements
+  { src: "/achement/first nexera.png", title: "1st Place — Nexera Challenge S1" },
+  { src: "/achement/sec nexera.png", title: "2nd Place — Nexera Challenge S2" },
+  { src: "/achement/mintor nexera.png", title: "UI/UX Mentor at Nexera" },
+
+  // Internships
+  { src: "/achement/qaydny.jpeg", title: "Qayedny Internship Program" },
+  { src: "/achement/vconnect.jpeg", title: "UI/UX Internship — V.Connct" },
+
+  // University & Competitions
+  { src: "/achement/WhatsApp Image 2026-05-22 at 11.49.30 PM.jpeg", title: "1st Place — IS402 Best Project" },
+  { src: "/achement/graduation certificat.jpeg", title: "2nd Place — Best Graduation Project" },
+  { src: "/achement/M.Bahaa ( iEEE )-1.png", title: "Front-End Final Project — IEEE MUST" },
+  { src: "/achement/Ecpc.jpg", title: "Honorable Mention — ICPC ECPC 2024" },
+  { src: "/achement/Mohamed_Bahaa_Certificate_UI - UX Trainie_2025-1.png", title: "GDG On Campus UI/UX Trainee" },
+
+  // Certificates & Diplomas
+  { src: "/achement/ui ux certificat.jpeg", title: "Figma for UI/UX Design — Udemy" },
+  { src: "/achement/ui_ux udemy.png", title: "Figma UI/UX Crash Course — Udemy" },
+  { src: "/achement/FrontEnd.jpg", title: "Frontend Development Diploma — Route" },
+  { src: "/achement/UI-Ux.jpg", title: "UX/UI E-commerce Workshop" }
+];
+
 export default function About() {
+  const [selectedCert, setSelectedCert] = useState(null);
+
   return <>
 
-    <div className='min-h-screen bg-[#020618] py-9   '>
+    <div id="about" className='min-h-screen bg-[#020618] py-9   '>
       <motion.h1
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -28,23 +56,93 @@ export default function About() {
           <Image src="/me.png"
             width={800}
             height={800}
-            alt='profile image'
+            alt='Mohamed Bahaa - UI/UX Designer & Front-End Developer'
             className='none rounded-3xl md:w-full' />
         </div>
         {/* about me */}
         <div className='pt-5 md:pt-0 md:w-6/12'>
           <p className='text-white text-xl'>
             I’m a UI/UX Designer and Front-End Developer passionate about crafting intuitive, visually engaging, and user-centered digital experiences.
-
-            My main focus is understanding user behavior, solving real problems through design, and turning ideas into seamless interfaces. I create modern, responsive designs and bring them to life using React and front-end technologies.
-
+            My main focus is understanding user behavior, solving real problems through design, and turning ideas into seamless interfaces.
+            <br/><br/>
+            I create modern, responsive designs and bring them to life using React and front-end technologies. 
             I also leverage AI-powered tools to enhance my design process, generate ideas faster, and build smarter, more efficient solutions.
-
+            <br/><br/>
             With a strong eye for detail and a deep interest in user psychology, I aim to design products that are not just beautiful — but meaningful and easy to use.
           </p>
         </div>
 
       </motion.div>
+
+      {/* --- MY ACHIEVEMENTS (MARQUEE) --- */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        className="mt-20 max-w-7xl mx-auto px-4 md:px-20 mb-20"
+      >
+        <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-4 text-center tracking-tight">
+          My <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Achievements</span>
+        </h2>
+        <p className="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
+          A collection of my certificates, awards, and milestones across various competitions and platforms.
+        </p>
+
+        <div className="relative flex overflow-hidden w-full group py-8">
+          <div className="absolute top-0 left-0 w-16 md:w-48 h-full bg-gradient-to-r from-[#020618] to-transparent z-10 pointer-events-none"></div>
+          <div className="absolute top-0 right-0 w-16 md:w-48 h-full bg-gradient-to-l from-[#020618] to-transparent z-10 pointer-events-none"></div>
+
+          <style>{`
+            @keyframes marquee {
+              0% { transform: translateX(0%); }
+              100% { transform: translateX(-50%); }
+            }
+            .animate-marquee-infinite {
+              animation: marquee 50s linear infinite;
+              display: flex;
+              width: max-content;
+            }
+            .group:hover .animate-marquee-infinite {
+              animation-play-state: paused;
+            }
+          `}</style>
+
+          <div className="animate-marquee-infinite">
+            {[0, 1].map((key) => (
+              <div key={key} className="flex gap-6 pr-6">
+                {certificateAchievements.map((cert, index) => {
+                  const rotations = ["rotate-1", "-rotate-2", "rotate-2", "-rotate-1", "rotate-0"];
+                  const rotation = rotations[index % rotations.length];
+
+                  return (
+                    <div
+                      key={index}
+                      onClick={() => setSelectedCert(cert)}
+                      className={`w-72 sm:w-80 flex-shrink-0 bg-white/[0.03] border border-white/10 p-4 rounded-3xl flex flex-col items-center backdrop-blur-sm shadow-xl shadow-black/20 hover:!rotate-0 hover:scale-105 hover:bg-white/10 hover:border-cyan-400/50 hover:shadow-[0_0_30px_rgba(6,182,212,0.25)] transition-all duration-300 relative group/card cursor-pointer ${rotation}`}
+                    >
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 blur-[50px] rounded-full opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                      <div className="relative w-full h-48 md:h-52 mb-5 rounded-2xl overflow-hidden bg-black/40 border border-white/5 z-10">
+                        <Image
+                          src={cert.src}
+                          alt={cert.title}
+                          fill
+                          className="object-cover group-hover/card:scale-110 transition-transform duration-700 ease-out"
+                          sizes="(max-width: 768px) 100vw, 300px"
+                        />
+                        <div className="absolute inset-0 bg-cyan-500/0 group-hover/card:bg-cyan-500/10 transition-colors duration-500 pointer-events-none"></div>
+                      </div>
+                      <h3 className="text-white text-center font-bold text-base md:text-lg whitespace-normal leading-tight h-12 flex items-center justify-center w-full px-2 relative z-10 group-hover/card:text-cyan-300 transition-colors">
+                        {cert.title}
+                      </h3>
+                    </div>
+                  );
+                })}
+              </div>
+            ))}
+          </div>
+        </div>
+      </motion.div>
+
 
       {/* Experience Section */}
       <motion.h1
@@ -72,7 +170,7 @@ export default function About() {
             <div className="bg-[#0e1229] p-6 rounded-xl shadow-lg border border-cyan-500/20 hover:border-cyan-500/50 transition-colors duration-300">
               <div className="flex flex-col md:flex-row md:items-center justify-between mb-2 gap-4">
                 <h3 className="text-2xl font-bold text-white">UI/UX Designer Intern</h3>
-                <span className="text-cyan-400 font-medium bg-cyan-500/10 px-3 py-1 rounded-full text-sm w-fit min-w-max">28 Dec 2025 - 28 Mar 2026</span>
+                <span className="text-cyan-400 font-medium bg-cyan-500/10 px-3 py-1 rounded-full text-sm w-fit min-w-max">28 Dec 2025 - 28 Mar 2026 (3 months)</span>
               </div>
               <h4 className="text-lg text-gray-300 mb-4 font-semibold">V.CONNCT</h4>
               <ul className="text-gray-400 leading-relaxed list-disc list-inside space-y-2">
@@ -153,5 +251,47 @@ export default function About() {
       </motion.div>
     </div>
 
-  </>
+    {/* --- CERTIFICATE MODAL --- */}
+    <AnimatePresence>
+      {selectedCert && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={() => setSelectedCert(null)}
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-8 bg-black/80 backdrop-blur-sm"
+        >
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0, y: 20 }}
+            animate={{ scale: 1, opacity: 1, y: 0 }}
+            exit={{ scale: 0.9, opacity: 0, y: 20 }}
+            onClick={(e) => e.stopPropagation()}
+            className="relative w-full max-w-4xl bg-[#020618] border border-white/10 rounded-2xl overflow-hidden shadow-2xl flex flex-col"
+          >
+            <button
+              onClick={() => setSelectedCert(null)}
+              className="absolute top-3 right-3 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-black/60 text-white/80 hover:bg-white/20 hover:text-white transition-colors backdrop-blur-md"
+            >
+              ✕
+            </button>
+
+            <div className="relative w-full h-[50vh] sm:h-[65vh] md:h-[75vh] bg-black/50">
+              <Image
+                src={selectedCert.src}
+                alt={selectedCert.title}
+                fill
+                className="object-contain p-2"
+                sizes="100vw"
+              />
+            </div>
+
+            <div className="p-4 sm:p-6 bg-slate-900/90 border-t border-white/10 text-center">
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-1 px-8">{selectedCert.title}</h3>
+              <p className="text-cyan-400 text-xs sm:text-sm font-medium">Achievement & Certification</p>
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  </>;
 }

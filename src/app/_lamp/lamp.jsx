@@ -20,7 +20,7 @@ export function LampDemo() {
           ease: "easeInOut",
         }}
         className="mt-8 bg-gradient-to-br from-slate-300 to-slate-500 py-4 bg-clip-text text-center text-4xl capitalize font-medium tracking-tight text-transparent md:text-7xl">
-        hallo, i'm mohamed bahaa
+        Hello, I'm Mohamed Bahaa
       </motion.h1>
       <motion.p initial={{ opacity: 0.5, y: 100 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -30,6 +30,23 @@ export function LampDemo() {
           ease: "easeInOut",
         }} className="mt-8 bg-gradient-to-br from-slate-300 to-slate-500 py-4 bg-clip-text text-center text-4xl capitalize font-medium tracking-tight text-transparent md:text-4xl">ui/ux designer  & front end developer
       </motion.p>
+{/* 
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5, duration: 1, ease: "easeInOut" }}
+        className="flex flex-wrap justify-center gap-4 mt-4"
+      >
+        <span className="px-4 py-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-400 font-medium text-sm md:text-base shadow-[0_0_10px_rgba(6,182,212,0.2)]">
+          +16 Projects Completed
+        </span>
+        <span className="px-4 py-2 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-400 font-medium text-sm md:text-base shadow-[0_0_10px_rgba(59,130,246,0.2)]">
+          🥈 2nd Place NARSS
+        </span>
+        <span className="px-4 py-2 rounded-full border border-purple-500/30 bg-purple-500/10 text-purple-400 font-medium text-sm md:text-base shadow-[0_0_10px_rgba(168,85,247,0.2)]">
+          🥇 1st Place IS402
+        </span>
+      </motion.div> */}
       <div className="flex items-center justify-center gap-4">
         <motion.a
           href="/Mohamed_Bahaa_CV.pdf"
@@ -64,8 +81,8 @@ export function LampDemo() {
       </div>
 
     </LampContainer>
+    <Projects isHome={true} />
     <About />
-    <Projects />
     <Services />
     <Contact />
   </>;
@@ -145,9 +162,10 @@ export const LampContainer = ({
         <div
           className="absolute inset-auto z-40 h-44 w-full -translate-y-[12.5rem] bg-slate-950 "></div>
       </div>
-      <div className="relative z-50 flex -translate-y-80 flex-col items-center px-5">
+      <div className="relative z-50 flex -translate-y-60 md:-translate-y-80 flex-col items-center px-5">
         {children}
       </div>
     </div>
   );
 };
+
