@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import { motion, AnimatePresence } from "framer-motion";
 import Link from 'next/link';
 import Skills from '../_skills/page';
+import AchievementCard from '../../components/AchievementCard';
 
 const certificateAchievements = [
   // Nexera Achievements
@@ -115,26 +116,12 @@ export default function About() {
                   const rotation = rotations[index % rotations.length];
 
                   return (
-                    <div
+                    <AchievementCard
                       key={index}
+                      cert={cert}
+                      rotationClass={rotation}
                       onClick={() => setSelectedCert(cert)}
-                      className={`w-72 sm:w-80 flex-shrink-0 bg-white/[0.03] border border-white/10 p-4 rounded-3xl flex flex-col items-center backdrop-blur-sm shadow-xl shadow-black/20 hover:!rotate-0 hover:scale-105 hover:bg-white/10 hover:border-cyan-400/50 hover:shadow-[0_0_30px_rgba(6,182,212,0.25)] transition-all duration-300 relative group/card cursor-pointer ${rotation}`}
-                    >
-                      <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 blur-[50px] rounded-full opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                      <div className="relative w-full h-48 md:h-52 mb-5 rounded-2xl overflow-hidden bg-black/40 border border-white/5 z-10">
-                        <Image
-                          src={cert.src}
-                          alt={cert.title}
-                          fill
-                          className="object-cover group-hover/card:scale-110 transition-transform duration-700 ease-out"
-                          sizes="(max-width: 768px) 100vw, 300px"
-                        />
-                        <div className="absolute inset-0 bg-cyan-500/0 group-hover/card:bg-cyan-500/10 transition-colors duration-500 pointer-events-none"></div>
-                      </div>
-                      <h3 className="text-white text-center font-bold text-base md:text-lg whitespace-normal leading-tight h-12 flex items-center justify-center w-full px-2 relative z-10 group-hover/card:text-cyan-300 transition-colors">
-                        {cert.title}
-                      </h3>
-                    </div>
+                    />
                   );
                 })}
               </div>

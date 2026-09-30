@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./_Navbar/Page";
+import SplashScreen from "../components/SplashScreen";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,6 +25,7 @@ export default function RootLayout({ children }) {
         suppressHydrationWarning
         className={`${geistSans.variable} ${geistMono.variable} antialiased pb-16 md:pb-0`}
       >
+        <SplashScreen />
         <Navbar />
         {children}
       </body>
