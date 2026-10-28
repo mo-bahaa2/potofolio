@@ -24,6 +24,7 @@ const certificateAchievements = [
   { src: "/achement/Mohamed_Bahaa_Certificate_UI - UX Trainie_2025-1.png", title: "GDG On Campus UI/UX Trainee" },
 
   // Certificates & Diplomas
+  { src: "/achement/edrak_ux .jpg", title: "User Experience Design — Edraak" },
   { src: "/achement/ui ux certificat.jpeg", title: "Figma for UI/UX Design — Udemy" },
   { src: "/achement/ui_ux udemy.png", title: "Figma UI/UX Crash Course — Udemy" },
   { src: "/achement/FrontEnd.jpg", title: "Frontend Development Diploma — Route" },
