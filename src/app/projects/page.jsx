@@ -56,8 +56,8 @@ export default function Projects({ isHome = false }) {
       name: 'Minders Magazine — App-like Reading Experience',
       demo: 'https://minders-magazine.vercel.app/',
       github: null,
-      type: 'personal',
-      category: ['Front-End', 'UI/UX'],
+      type: 'freelance',
+      category: ['Front-End', 'UI/UX' ,'Back-End'],
       skills: ['UI/UX', 'React', 'TypeScript', 'Tailwind', 'Framer Motion', 'PWA']
     },
     {
