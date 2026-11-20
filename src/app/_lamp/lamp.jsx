@@ -81,8 +81,8 @@ export function LampDemo() {
       </div>
 
     </LampContainer>
-    <Projects isHome={true} />
     <About />
+    <Projects isHome={true} />
     <Services />
     <Contact />
   </>;

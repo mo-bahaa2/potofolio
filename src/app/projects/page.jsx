@@ -62,14 +62,14 @@ export default function Projects({ isHome = false }) {
     },
     {
       id: "new-1",
-      src: '/EduBot.png',
+      src: '/edubot-cover.png',
       name: 'Edubot — AI-Powered Educational Platform',
-      demo: '/projects/edubot', // Custom internal page
+      demo: 'https://www.behance.net/gallery/258523873/Edu-Bot',
       github: null,
       type: 'freelance',
       category: 'UI/UX',
       skills: ['UI/UX', 'Figma', 'Prototyping'],
-      isInternal: true
+      isInternal: false
     },
     {
       id: "new-3",
@@ -281,7 +281,7 @@ export default function Projects({ isHome = false }) {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.2 }}
-                  className={`bg-white/[0.03] border border-white/10 p-8 md:p-10 rounded-3xl hover:bg-white/[0.05] transition-all duration-300 relative overflow-hidden group ${item.link ? 'cursor-pointer hover:border-cyan-500/50 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)]' : ''}`}
+                  className={`bg-white/[0.03] border border-white/10 p-5 sm:p-8 md:p-10 rounded-2xl sm:rounded-3xl hover:bg-white/[0.05] transition-all duration-300 relative overflow-hidden group ${item.link ? 'cursor-pointer hover:border-cyan-500/50 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)]' : ''}`}
                 >
                   <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-500/10 blur-[80px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
@@ -354,17 +354,17 @@ export default function Projects({ isHome = false }) {
           {/* Primary Filter Buttons */}
           {!isHome && (
           <>
-          <div className="flex flex-wrap justify-center gap-4 mb-6">
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-6">
             {filters.map((filter) => (
               <button
                 key={filter.id}
                 onClick={() => handleFilterChange(filter.id)}
-                className={`px-6 py-2.5 rounded-full font-medium transition-all duration-300 ${activeFilter === filter.id
+                className={`px-4 py-2 sm:px-6 sm:py-2.5 rounded-full text-xs sm:text-sm md:text-base font-medium transition-all duration-300 min-h-[40px] ${activeFilter === filter.id
                   ? 'bg-cyan-500 text-white shadow-[0_0_20px_rgba(6,182,212,0.4)] scale-105'
                   : 'bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white'
                   }`}
               >
-                {filter.label} <span className="ml-1.5 opacity-60 text-sm">({filter.count})</span>
+                {filter.label} <span className="ml-1 opacity-60 text-xs sm:text-sm">({filter.count})</span>
               </button>
             ))}
           </div>
@@ -449,23 +449,23 @@ export default function Projects({ isHome = false }) {
                   </div>
 
                   {/* Content */}
-                  <div className="p-6 flex flex-col flex-1">
-                    <h3 className='text-white text-xl font-bold mb-3 line-clamp-2'>{project.name}</h3>
+                  <div className="p-4 sm:p-6 flex flex-col flex-1">
+                    <h3 className='text-white text-lg sm:text-xl font-bold mb-3 line-clamp-2'>{project.name}</h3>
 
-                    <div className="flex flex-wrap gap-2 mb-6 mt-auto">
+                    <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-6 mt-auto">
                       {project.skills.map(skill => (
-                        <span key={skill} className="text-xs font-medium text-gray-400 bg-white/5 px-2.5 py-1 rounded-md border border-white/5">
+                        <span key={skill} className="text-[11px] sm:text-xs font-medium text-gray-400 bg-white/5 px-2 sm:px-2.5 py-1 rounded-md border border-white/5">
                           {skill}
                         </span>
                       ))}
                     </div>
 
                     {/* Action Buttons */}
-                    <div className='flex gap-3 pt-4 border-t border-white/5'>
+                    <div className='flex gap-2 sm:gap-3 pt-4 border-t border-white/5'>
                       {project.isInternal ? (
                         <Link
                           href={project.demo}
-                          className='flex-1 flex items-center justify-center gap-2 py-2.5 bg-white/5 text-white text-sm font-medium rounded-xl hover:bg-cyan-500 hover:text-white transition-colors group/btn'
+                          className='flex-1 flex items-center justify-center gap-2 py-3 bg-white/5 text-white text-xs sm:text-sm font-semibold rounded-xl hover:bg-cyan-500 hover:text-white transition-colors group/btn min-h-[44px]'
                         >
                           <span>View UI Screens</span>
                           <FaExternalLinkAlt className="text-xs opacity-50 group-hover/btn:opacity-100" />
@@ -475,7 +475,7 @@ export default function Projects({ isHome = false }) {
                           href={project.demo}
                           target='_blank'
                           rel='noopener noreferrer'
-                          className='flex-1 flex items-center justify-center gap-2 py-2.5 bg-white/5 text-white text-sm font-medium rounded-xl hover:bg-cyan-500 hover:text-white transition-colors group/btn'
+                          className='flex-1 flex items-center justify-center gap-2 py-3 bg-white/5 text-white text-xs sm:text-sm font-semibold rounded-xl hover:bg-cyan-500 hover:text-white transition-colors group/btn min-h-[44px]'
                         >
                           <span>View Project</span>
                           <FaExternalLinkAlt className="text-xs opacity-50 group-hover/btn:opacity-100" />
@@ -487,7 +487,7 @@ export default function Projects({ isHome = false }) {
                           href={project.github}
                           target='_blank'
                           rel='noopener noreferrer'
-                          className='px-4 flex items-center justify-center bg-white/5 text-gray-300 text-lg rounded-xl hover:bg-white/10 hover:text-white transition-colors'
+                          className='px-3.5 sm:px-4 flex items-center justify-center bg-white/5 text-gray-300 text-lg rounded-xl hover:bg-white/10 hover:text-white transition-colors min-h-[44px]'
                           title="View Source Code"
                         >
                           <FaGithub />

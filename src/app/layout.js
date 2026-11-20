@@ -20,10 +20,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark bg-[#020618] overflow-x-hidden max-w-full">
       <body
         suppressHydrationWarning
-        className={`${geistSans.variable} ${geistMono.variable} antialiased pb-16 md:pb-0`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased pb-24 md:pb-0 bg-[#020618] text-white overflow-x-hidden max-w-full`}
       >
         <SplashScreen />
         <Navbar />

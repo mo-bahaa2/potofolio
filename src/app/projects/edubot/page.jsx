@@ -40,7 +40,7 @@ export default function EdubotProject() {
           {/* Cover Image */}
           <div className="w-full aspect-video md:aspect-[21/9] relative rounded-2xl overflow-hidden mb-12 shadow-[0_0_30px_rgba(6,182,212,0.1)] border border-white/10">
             <Image 
-              src="/EduBot.png" 
+              src="/edubot-cover.png" 
               alt="Edubot Cover" 
               fill 
               className="object-cover object-top"
@@ -48,15 +48,25 @@ export default function EdubotProject() {
             />
           </div>
           
-          {/* Case Study Notice */}
-          <div className="bg-gradient-to-r from-yellow-500/10 to-transparent border-l-4 border-yellow-500 rounded-r-xl p-6 mb-12 flex items-start gap-4">
-            <FaClock className="text-yellow-400 text-2xl flex-shrink-0 mt-1" />
+          {/* Case Study Live on Behance */}
+          <div className="bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-transparent border-l-4 border-cyan-400 rounded-r-2xl p-5 sm:p-6 mb-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div>
-              <h3 className="text-yellow-400 font-bold text-xl mb-2">Case Study in Progress</h3>
-              <p className="text-gray-300 text-lg leading-relaxed">
-                The full comprehensive case study for Edubot is currently being prepared and will be published soon on Behance. Meanwhile, please take a look at some of the core UI screens designed for the platform below.
+              <h3 className="text-cyan-400 font-bold text-lg sm:text-xl mb-1 flex items-center gap-2">
+                <span>🎨 Behance Case Study Live</span>
+              </h3>
+              <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
+                Explore the complete UX research, design system, interactive flows, and final UI components on Behance.
               </p>
             </div>
+            <a
+              href="https://www.behance.net/gallery/258523873/Edu-Bot"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-white font-semibold text-sm transition-all duration-300 shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:scale-105 flex-shrink-0"
+            >
+              <span>View on Behance</span>
+              <span>↗</span>
+            </a>
           </div>
 
           {/* UI Screens Preview */}

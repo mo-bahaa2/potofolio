@@ -90,21 +90,21 @@ export default function Contact() {
           onSubmit={() => setSubmitted(true)}
           action="https://formspree.io/f/xldjajno"
           method="POST"
-          className="bg-[#0e1229] p-6 rounded-xl w-full max-w-md space-y-4 shadow-lg"
+          className="bg-[#0e1229] p-5 sm:p-6 rounded-2xl w-full max-w-md space-y-4 shadow-lg border border-white/5"
         >
           <input
             type="text"
             name="name"
             placeholder="Your Name"
             required
-            className="w-full px-4 py-2 rounded-lg bg-[#1b1e3a] text-white outline-none focus:ring-2 focus:ring-cyan-500 transition"
+            className="w-full px-4 py-3 rounded-xl bg-[#1b1e3a] text-white text-base outline-none focus:ring-2 focus:ring-cyan-500 transition min-h-[46px]"
           />
           <input
             type="email"
             name="email"
             placeholder="Your Email"
             required
-            className="w-full px-4 py-2 rounded-lg bg-[#1b1e3a] text-white outline-none focus:ring-2 focus:ring-cyan-500 transition"
+            className="w-full px-4 py-3 rounded-xl bg-[#1b1e3a] text-white text-base outline-none focus:ring-2 focus:ring-cyan-500 transition min-h-[46px]"
           />
 
           {/* Service Selection Dropdown */}
@@ -126,7 +126,7 @@ export default function Contact() {
             {/* Custom UI Dropdown */}
             <div 
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-              className={`w-full px-4 py-2 rounded-lg bg-[#1b1e3a] text-white outline-none cursor-pointer border transition flex justify-between items-center ${
+              className={`w-full px-4 py-3 rounded-xl bg-[#1b1e3a] text-white text-base outline-none cursor-pointer border transition flex justify-between items-center min-h-[46px] ${
                 isDropdownOpen ? 'border-cyan-500 ring-2 ring-cyan-500/50' : 'border-transparent hover:border-cyan-500/50'
               }`}
             >
@@ -152,7 +152,7 @@ export default function Contact() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.2 }}
-                  className="absolute z-50 w-full mt-2 bg-[#1b1e3a] border border-cyan-500/30 rounded-lg shadow-xl overflow-hidden"
+                  className="absolute z-50 w-full mt-2 bg-[#1b1e3a] border border-cyan-500/30 rounded-xl shadow-xl overflow-hidden"
                 >
                   {services.filter(s => s.value !== "").map((service) => (
                     <div
@@ -161,7 +161,7 @@ export default function Contact() {
                         setSelectedService(service.value);
                         setIsDropdownOpen(false);
                       }}
-                      className="px-4 py-3 text-gray-200 hover:bg-cyan-500/20 hover:text-cyan-400 cursor-pointer transition-colors border-b border-white/5 last:border-b-0"
+                      className="px-4 py-3 text-sm sm:text-base text-gray-200 hover:bg-cyan-500/20 hover:text-cyan-400 cursor-pointer transition-colors border-b border-white/5 last:border-b-0 min-h-[44px] flex items-center"
                     >
                       {service.label}
                     </div>
@@ -176,12 +176,12 @@ export default function Contact() {
             placeholder="Your Message"
             rows="5"
             required
-            className="w-full px-4 py-2 rounded-lg bg-[#1b1e3a] text-white outline-none focus:ring-2 focus:ring-cyan-500 transition resize-none"
+            className="w-full px-4 py-3 rounded-xl bg-[#1b1e3a] text-white text-base outline-none focus:ring-2 focus:ring-cyan-500 transition resize-none"
           ></textarea>
 
           <button
             type="submit"
-            className="bg-cyan-500 hover:bg-cyan-600 transition w-full py-2 rounded-lg font-bold hover:cursor-pointer hover:shadow-lg hover:scale-105 active:scale-95"
+            className="bg-cyan-500 hover:bg-cyan-600 transition w-full py-3.5 rounded-xl font-bold text-base hover:cursor-pointer hover:shadow-lg hover:scale-[1.02] active:scale-95 min-h-[48px]"
           >
             Send Message
           </button>
